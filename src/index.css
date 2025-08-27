@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure drag and drop works properly */
+[draggable="true"] {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: element;
+}
+
+[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* Fix for external debugging overlays - DISABLED to allow Palette interactions */
+/* [data-lov-id*="Palette"] {
+  pointer-events: none !important;
+} */
+
+/* Ensure interactive elements always work */
+button, 
+[role="button"], 
+input, 
+textarea, 
+select, 
+[draggable="true"],
+.scrollable-area,
+[data-radix-scroll-area-viewport],
+[data-radix-dropdown-menu-content],
+[data-radix-dropdown-menu-item],
+[role="menu"],
+[role="menuitem"] {
+  pointer-events: auto !important;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - improved contrast for light mode */
+    --background: 0 0% 99%;
+    --foreground: 240 10% 9%;
+
+    /* Surface colors - better contrast */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 9%;
+
+    /* Primary brand - vibrant blue with better contrast */
+    --primary: 217 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 50%;
+
+    /* Secondary - improved contrast */
+    --secondary: 240 5% 94%;
+    --secondary-foreground: 240 10% 15%;
+
+    /* Muted backgrounds - better readability */
+    --muted: 240 5% 94%;
+    --muted-foreground: 240 6% 35%;
+
+    /* Accent - toned down for better readability */
+    --accent: 270 60% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors - improved contrast */
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 32%;
+    --success-foreground: 0 0% 100%;
+    --warning: 48 96% 48%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Borders and inputs - better visibility */
+    --border: 240 6% 85%;
+    --input: 240 6% 92%;
+    --ring: 217 91% 55%;
+
+    /* Canvas specific - improved contrast */
+    --canvas-bg: 240 7% 96%;
+    --canvas-grid: 240 5% 88%;
+    --node-bg: 0 0% 100%;
+    --node-border: 240 6% 82%;
+    --node-hover: 217 91% 92%;
+    --node-selected: 217 91% 55%;
+
+    /* Workflow execution states */
+    --exec-pending: 48 96% 48%;
+    --exec-running: 217 91% 55%;
+    --exec-success: 142 76% 32%;
+    --exec-error: 0 84% 55%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 55%), hsl(270 60% 65%));
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%), hsl(240 5% 96%));
+
+    /* Shadows - more visible in light mode */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.08);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.12), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --shadow-glow: 0 0 20px hsl(217 91% 55% / 0.25);
+
+    --radius: 0.75rem;
+
+    /* Sidebar - improved contrast */
+    --sidebar-background: 240 5% 94%;
+    --sidebar-foreground: 240 10% 9%;
+    --sidebar-primary: 217 91% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 88%;
+    --sidebar-accent-foreground: 240 10% 9%;
+    --sidebar-border: 240 6% 85%;
+    --sidebar-ring: 217 91% 55%;
+  }
+
+  .dark {
+    /* Base colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Surface colors */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary brand */
+    --primary: 217 91% 60%;
+    --primary-foreground: 240 10% 3.9%;
+    --primary-hover: 217 91% 65%;
+
+    /* Secondary */
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted backgrounds */
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Accent */
+    --accent: 270 95% 75%;
+    --accent-foreground: 240 10% 3.9%;
+
+    /* Status colors */
+    --destructive: 0 76% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 48 96% 53%;
+    --warning-foreground: 240 10% 3.9%;
+
+    /* Borders and inputs */
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 217 91% 60%;
+
+    /* Canvas specific */
+    --canvas-bg: 240 6% 6%;
+    --canvas-grid: 240 4% 12%;
+    --node-bg: 240 4% 16%;
+    --node-border: 240 4% 20%;
+    --node-hover: 217 91% 15%;
+    --node-selected: 217 91% 60%;
+
+    /* Workflow execution states */
+    --exec-pending: 48 96% 53%;
+    --exec-running: 217 91% 60%;
+    --exec-success: 142 76% 36%;
+    --exec-error: 0 76% 50%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(270 95% 75%));
+    --gradient-surface: linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 6% 6%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-glow: 0 0 20px hsl(217 91% 60% / 0.4);
+
+    /* Sidebar */
+    --sidebar-background: 240 6% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 240 10% 3.9%;
+    --sidebar-accent: 240 4% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  /* Prevent outer page scroll; use in-panel scrollers instead */
+  body {
+    overflow: hidden;
+  }
+}
+
+/* React Flow Styles */
+.react-flow__node {
+  font-size: 12px;
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Animation for running nodes */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.node-running {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Flowing edge animation */
+.flow-edge {
+  stroke: hsl(var(--primary));
+  stroke-width: 2px;
+  stroke-dasharray: 6 6;
+  opacity: 0.6;
+}
+
+.flow-edge-animated {
+  opacity: 0.95;
+  animation: flow-dash 0.9s linear infinite;
+}
+
+@keyframes flow-dash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -24; }
+}
+
+/* Hide native scrollbars but keep scrolling functional */
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Simple performance optimizations */
+.react-flow__node {
+  transition: box-shadow 0.2s ease;
+}
