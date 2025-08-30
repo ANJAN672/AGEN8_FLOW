@@ -1,8 +1,0 @@
-﻿# Google OAuth Client ID (any project)
-regex:\b[0-9]+-[a-z0-9\-]+\.apps\.googleusercontent\.com\b ==> REMOVED_GOOGLE_CLIENT_ID
-
-# Google OAuth Client Secret (common prefix)
-regex:\bGOCSPX-[A-Za-z0-9_-]{20,}\b ==> REMOVED_GOOGLE_CLIENT_SECRET
-
-# Slack tokens (xoxb, xoxp, xoxa, xoxr, xoxs)
-regex:\bxox[a-z]-[A-Za-z0-9-]{10,}\b ==> REMOVED_SLACK_TOKEN
